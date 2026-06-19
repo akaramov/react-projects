@@ -3,7 +3,11 @@ import "./header.css";
 // 1. Import Link ពី react-router-dom ចូលមកប្រើ
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header({ cart }) {
+  let totalQyt = 0;
+  cart.forEach((cartItem) => {
+    totalQyt += cartItem.quantity;
+  });
   return (
     <>
       <div className="header">
@@ -47,7 +51,7 @@ function Header() {
               src="images/icons/cart-icon.png"
               alt="Cart"
             />
-            <div className="cart-quantity">3</div>
+            <div className="cart-quantity">{totalQyt}</div>
             <div className="cart-text">Cart</div>
           </Link>
         </div>

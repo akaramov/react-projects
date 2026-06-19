@@ -6,11 +6,16 @@ import { products } from "../Data/products";
 import axios from "axios";
 
 function HomePage() {
+  //    name ,Updater functions
   const [products, setProduct] = useState([]);
+  const [cart, setCard] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3000/api/products").then((response) => {
       setProduct(response.data);
+    });
+    axios.get("http://localhost:3000/api/cart-items").then((response) => {
+      setCard(response.data);
     });
   }, []);
 
@@ -26,7 +31,7 @@ function HomePage() {
     <>
       <title> Home Page</title>
       <body>
-        <Header />
+        <Header cart={cart} />
         <div className="home-page">
           <div className="products-grid">
             {products.map((product) => {
