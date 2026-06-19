@@ -1,13 +1,18 @@
 import React from "react";
 import Header from "../Components/Header";
+import { useEffect, useState } from "react";
 import "../Style/homePage.css";
 import { products } from "../Data/products";
 import axios from "axios";
 
 function HomePage() {
-  axios.get("http://localhost:3000/api/products").then((response) => {
-    console.log(response.data);
-  });
+  const [products, setProduct] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/api/products").then((response) => {
+      setProduct(response.data);
+    });
+  }, []);
 
   // fetch("http://localhost:3000/api/products") // send reques to sever
   //   //wait for response
