@@ -2,16 +2,21 @@ import React from "react";
 import Header from "../Components/Header";
 import "../Style/homePage.css";
 import { products } from "../Data/products";
+import axios from "axios";
 
 function HomePage() {
-  fetch("http://localhost:3000/api/products") // send reques to sever
-    //wait for response
-    .then((repsonse) => {
-      return repsonse.json();
-    })
-    .then((data) => {
-      console.log(data);
-    });
+  axios.get("http://localhost:3000/api/products").then((response) => {
+    console.log(response.data);
+  });
+
+  // fetch("http://localhost:3000/api/products") // send reques to sever
+  //   //wait for response
+  //   .then((repsonse) => {
+  //     return repsonse.json();
+  //   })
+  //   .then((data) => {
+  //     console.log(data);
+  //   });
   return (
     <>
       <title> Home Page</title>
