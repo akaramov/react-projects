@@ -7,15 +7,12 @@ import axios from "axios";
 
 function HomePage() {
   //    name ,Updater functions
-  const [products, setProduct] = useState([]);
-  const [cart, setCard] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/products").then((response) => {
+    axios.get("/api/products").then((response) => {
       setProduct(response.data);
-    });
-    axios.get("http://localhost:3000/api/cart-items").then((response) => {
-      setCard(response.data);
     });
   }, []);
 
@@ -29,8 +26,8 @@ function HomePage() {
   //   });
   return (
     <>
-      <title> Home Page</title>
       <body>
+        <title> Home Page</title>
         <Header cart={cart} />
         <div className="home-page">
           <div className="products-grid">
