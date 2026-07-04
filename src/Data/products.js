@@ -462,3 +462,6 @@ export const products = [
     keywords: ["kitchen", "kitchen towels", "tissues"],
   },
 ];
+export function FromatMoney(priceCents) {
+  return `$${(product.priceCents / 100).toFixed(2)}`;
+}

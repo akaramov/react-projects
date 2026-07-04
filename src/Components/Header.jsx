@@ -3,7 +3,7 @@ import "./header.css";
 // 1. Import Link ពី react-router-dom ចូលមកប្រើ
 import { Link } from "react-router-dom";
 
-function Header({ cart }) {
+function Header({ cart = [] }) {
   let totalQyt = 0;
   cart.forEach((cartItem) => {
     totalQyt += cartItem.quantity;
@@ -16,7 +16,7 @@ function Header({ cart }) {
           <Link to="/" className="header-link">
             <img
               className="logo"
-              src="images/AkaraStore.png"
+              src="images/icons/buy-again.png"
               alt="Company Logo"
             />
             <img
