@@ -5,8 +5,10 @@ import "../Style/CheckOut.css";
 import "../Style/CheckOut-header.css";
 import { FomartMoney } from "../utils/money";
 import Header from "../Components/Header";
+// import { FomartMoney } from "../Data/products";
 function CheckOut({ cart }) {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
+  const [paymentSummary, setSammaryPayment] = useState([null]);
   useEffect(() => {
     axios
       .get("/api/delivery-options?expandEstimatedDeliveryTime")
@@ -14,6 +16,10 @@ function CheckOut({ cart }) {
         setDeliveryOptions(response.data);
       });
     // Show when it reload one time
+
+    axios.get("/api/payment-summary").then((response) => {
+      setSammaryPayment(response.data);
+    });
   }, []);
   return (
     <>
@@ -115,35 +121,43 @@ function CheckOut({ cart }) {
 
           <div className="payment-summary">
             <div className="payment-summary-title">Payment Summary</div>
-
-            <div className="payment-summary-row">
-              <div>Items (3):</div>
-              <div className="payment-summary-money">$42.75</div>
-            </div>
-
-            <div className="payment-summary-row">
-              <div>Shipping &amp; handling:</div>
-              <div className="payment-summary-money">$4.99</div>
-            </div>
-
-            <div className="payment-summary-row subtotal-row">
-              <div>Total before tax:</div>
-              <div className="payment-summary-money">$47.74</div>
-            </div>
-
-            <div className="payment-summary-row">
-              <div>Estimated tax (10%):</div>
-              <div className="payment-summary-money">$4.77</div>
-            </div>
-
-            <div className="payment-summary-row total-row">
-              <div>Order total:</div>
-              <div className="payment-summary-money">$52.51</div>
-            </div>
-
-            <button className="place-order-button button-primary">
-              Place your order
-            </button>
+            {paymentSummary && (
+              <>
+                <div className="payment-summary-row">
+                  <div>Items ({paymentSummary.totalItems}):</div>
+                  <div className="payment-summary-money">
+                    {FomartMoney(paymentSummary.productCostCents)}
+                  </div>
+                </div>
+                <div className="payment-summary-row">
+                  <div>Shipping &amp; handling:</div>
+                  <div className="payment-summary-money">
+                    {FomartMoney(paymentSummary.shippingCostCents)}
+                  </div>
+                </div>
+                <div className="payment-summary-row subtotal-row">
+                  <div>Total before tax:</div>
+                  <div className="payment-summary-money">
+                    {FomartMoney(paymentSummary.totalCostBeforeTaxCents)}
+                  </div>
+                </div>
+                <div className="payment-summary-row">
+                  <div>Estimated tax (10%):</div>
+                  <div className="payment-summary-money">
+                    {FomartMoney(paymentSummary.taxCents)}
+                  </div>
+                </div>
+                <div className="payment-summary-row total-row">
+                  <div>Order total:</div>
+                  <div className="payment-summary-money">
+                    {FomartMoney(paymentSummary.totalCostCents)}
+                  </div>
+                </div>
+                <button className="place-order-button button-primary">
+                  Place your order
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
