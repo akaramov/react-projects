@@ -8,6 +8,7 @@ import Orders from "./Pages/Orders";
 import axios from "axios";
 
 function App() {
+  // it call globla state beacause we share this data cart to another component
   const [cart, setCart] = useState([]);
   useEffect(() => {
     axios.get("/api/cart-items?expand=product").then((response) => {
@@ -20,7 +21,7 @@ function App() {
         <Route path="/" element={<HomePage cart={cart} />}></Route>
         <Route path="checkout" element={<CheckOut cart={cart} />}></Route>
         <Route path="tracking" element={<Tracking />}></Route>
-        <Route path="orders" element={<Orders />}></Route>
+        <Route path="orders" element={<Orders cart={cart} />}></Route>
       </Routes>
     </>
   );
