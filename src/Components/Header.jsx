@@ -3,7 +3,7 @@ import "./header.css";
 // 1. Import Link ពី react-router-dom ចូលមកប្រើ
 import { Link } from "react-router-dom";
 
-function Header({ cart = [] }) {
+function Header({ cart = [], searchValue, setsearchValue }) {
   let totalQyt = 0;
   cart.forEach((cartItem) => {
     totalQyt += cartItem.quantity;
@@ -28,7 +28,13 @@ function Header({ cart = [] }) {
         </div>
 
         <div className="middle-section">
-          <input className="search-bar" type="text" placeholder="Search" />
+          <input
+            className="search-bar"
+            type="text"
+            placeholder="Search"
+            value={searchValue}
+            onChange={(e) => setsearchValue(e.target.value)}
+          />
           <button className="search-button">
             <img
               className="search-icon"
