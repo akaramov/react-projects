@@ -11,9 +11,11 @@ function App() {
   // it call globla state beacause we share this data cart to another component
   const [cart, setCart] = useState([]);
   useEffect(() => {
-    axios.get("/api/cart-items?expand=product").then((response) => {
+    const FetchCartData = async () => {
+      const response = await axios.get("/api/cart-items?expand=product");
       setCart(response.data);
-    });
+    };
+    GetCartData();
   }, []);
   return (
     <>
