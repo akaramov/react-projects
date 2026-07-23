@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import HomePage from "./Pages/HomePage";
+import HomePage from "./Pages/Home/HomePage";
 import "./App.css";
-import CheckOut from "./Pages/CheckOut";
+import CheckOut from "./Pages//Checkout/CheckOut";
 import { Routes, Route } from "react-router";
 import Tracking from "./Pages/Tracking";
-import Orders from "./Pages/Orders";
+import Orders from "./Pages/Order/Orders";
 import axios from "axios";
 
 function App() {
