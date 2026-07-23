@@ -1,6 +1,6 @@
 import React from "react";
 import "./header.css";
-// 1. Import Link ពី react-router-dom ចូលមកប្រើ
+
 import { Link } from "react-router-dom";
 
 function Header({ cart = [], searchValue, setsearchValue }) {
@@ -12,7 +12,6 @@ function Header({ cart = [], searchValue, setsearchValue }) {
     <>
       <div className="header">
         <div className="left-section">
-          {/* 2. ប្តូរពី <a> មកជា <Link> និងប្តូរពី 'href' មកជា 'to' */}
           <Link to="/" className="header-link">
             <img
               className="logo"
@@ -31,9 +30,9 @@ function Header({ cart = [], searchValue, setsearchValue }) {
           <input
             className="search-bar"
             type="text"
-            placeholder="Search"
             value={searchValue}
             onChange={(e) => setsearchValue(e.target.value)}
+            placeholder="Search..."
           />
           <button className="search-button">
             <img
@@ -50,7 +49,6 @@ function Header({ cart = [], searchValue, setsearchValue }) {
             <span className="orders-text">Orders</span>
           </Link>
 
-          {/* 4. កែប្រែ Link របស់ Cart ឱ្យប្រើ <Link> និង 'to' ឱ្យបានត្រឹមត្រូវ */}
           <Link className="cart-link header-link" to="/checkout">
             <img
               className="cart-icon"

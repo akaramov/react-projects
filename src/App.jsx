@@ -10,6 +10,7 @@ import axios from "axios";
 function App() {
   // it call globla state beacause we share this data cart to another component
   const [cart, setCart] = useState([]);
+  const [search, setSearch] = useState(""); // Empty string cuz we want to search by  name
   useEffect(() => {
     const FetchCartData = async () => {
       const response = await axios.get("/api/cart-items?expand=product");
@@ -20,7 +21,12 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage cart={cart} />}></Route>
+        <Route
+          path="/"
+          element={
+            <HomePage cart={cart} search={search} setSearch={setSearch} />
+          }
+        ></Route>
         <Route path="checkout" element={<CheckOut cart={cart} />}></Route>
         <Route path="tracking" element={<Tracking />}></Route>
         <Route path="orders" element={<Orders cart={cart} />}></Route>
