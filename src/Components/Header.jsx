@@ -1,6 +1,5 @@
 import React from "react";
 import "./header.css";
-
 import { Link } from "react-router-dom";
 
 function Header({ cart = [], searchValue, setsearchValue }) {
@@ -9,7 +8,7 @@ function Header({ cart = [], searchValue, setsearchValue }) {
     totalQyt += cartItem.quantity;
   });
   return (
-    <>
+    <main>
       <div className="header">
         <div className="left-section">
           <Link to="/" className="header-link">
@@ -25,7 +24,6 @@ function Header({ cart = [], searchValue, setsearchValue }) {
             />
           </Link>
         </div>
-
         <div className="middle-section">
           <input
             className="search-bar"
@@ -42,9 +40,7 @@ function Header({ cart = [], searchValue, setsearchValue }) {
             />
           </button>
         </div>
-
         <div className="right-section">
-          {/* 3. កែប្រែ Link របស់ Orders */}
           <Link className="orders-link header-link" to="/orders">
             <span className="orders-text">Orders</span>
           </Link>
@@ -60,8 +56,7 @@ function Header({ cart = [], searchValue, setsearchValue }) {
           </Link>
         </div>
       </div>
-    </>
+    </main>
   );
 }
-
 export default Header;
