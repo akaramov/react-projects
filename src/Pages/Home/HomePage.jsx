@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import "../../Style/homePage.css";
 import { ProductGrid } from "./ProductGrid";
 import axios from "axios";
-function HomePage({ cart }) {
+import { Hero } from "./Hero";
+function HomePage({ cart, LoadCart }) {
   const [product, setProduct] = useState([]);
   const [searchValue, setsearchValue] = useState(""); // we use empty array because it string
   useEffect(() => {
@@ -18,14 +19,20 @@ function HomePage({ cart }) {
   return (
     <main>
       <section>
-        <title> Home Page</title>
+        <title>Home</title>
+
         <Header
           cart={cart}
           searchValue={searchValue}
           setsearchValue={setsearchValue}
         />
+        {/* <Hero /> */}
         <div className="home-page">
-          <ProductGrid products={product} searchValue={searchValue} />
+          <ProductGrid
+            products={product}
+            searchValue={searchValue}
+            LoadCart={LoadCart}
+          />
         </div>
       </section>
     </main>
