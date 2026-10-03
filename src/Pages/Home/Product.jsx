@@ -16,7 +16,7 @@ export function Product({ item, LoadCart }) {
   };
   return (
     <main>
-      <div className="product-container">
+      <div className="product-container border border-gray">
         <div className="product-image-container">
           <img className="product-image" src={item.image} />
         </div>
@@ -55,7 +55,7 @@ export function Product({ item, LoadCart }) {
         </div>
 
         <button
-          className="add-to-cart-button button-primary"
+          className="add-to-cart-button button-primary text-center! border rounded-xl bg-pink-400! text-white! pb-5!"
           onClick={AddtoCart}
         >
           Add to Cart

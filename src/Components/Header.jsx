@@ -9,7 +9,7 @@ function Header({ cart = [], searchValue, setsearchValue }) {
   });
   return (
     <main>
-      <div className="header">
+      <div className="header bg-pink-400!">
         <div className="left-section">
           <Link to="/" className="header-link">
             <img
@@ -24,7 +24,7 @@ function Header({ cart = [], searchValue, setsearchValue }) {
             />
           </Link>
         </div>
-        <div className="middle-section">
+        <div className="middle-section border border-white rounded-xl">
           <input
             className="search-bar"
             type="text"
